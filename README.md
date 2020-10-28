@@ -6,3 +6,6 @@ The following:
 - coc-settings.json
 
 Belong in ~/.config/nvim/
+
+## ZSH section
+.zshrc belongs in ~/.zshrc
