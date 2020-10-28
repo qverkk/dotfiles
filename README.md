@@ -1,6 +1,6 @@
-" Setup
+# Setup
 
-"" Nvim section
+## Nvim section
 The following:
 - init.vim
 - coc-settings.json
