@@ -75,10 +75,11 @@ ZSH_THEME="dst"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git ssh-agent)
 
-zstyle :omz:plugins:ssh-agent identities id_rsa github
+zstyle :omz:plugins:ssh-agent identities id_rsa legacy_github id_ed25519
 zstyle :omz:plugins:ssh-agent lifetime 1h
 
 source $ZSH/oh-my-zsh.sh
+source <(kubectl completion zsh)
 
 # User configuration
 
@@ -108,5 +109,7 @@ export LANG=en_US.UTF-8
 alias n="nvim"
 alias sudo="sudo "
 alias new_java_proj="./Documents/new_java_project.sh"
+alias k="kubectl"
+complete -F __start_kubectl k
 
 TERM=konsole

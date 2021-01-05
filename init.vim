@@ -80,6 +80,7 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
 
 Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-fugitive'
@@ -95,7 +96,7 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 
-let g:coc_global_extensions = ['coc-pairs', 'coc-java', 'coc-prettier', 'coc-json', 'coc-eslint', 'coc-tsserver', 'coc-css', 'coc-python', 'coc-angular', 'coc-yaml', 'coc-vimlsp', 'coc-sh', 'coc-snippets', "coc-explorer"]
+let g:coc_global_extensions = ['coc-pairs', 'coc-docker', 'coc-java', 'coc-prettier', 'coc-json', 'coc-eslint', 'coc-tsserver', 'coc-css', 'coc-python', 'coc-angular', 'coc-yaml', 'coc-vimlsp', 'coc-sh', 'coc-snippets', "coc-explorer"]
 
 " Split navigations
 noremap <C-J> <C-W><C-J>
@@ -105,6 +106,9 @@ noremap <C-H> <C-W><C-H>
 
 " coc-explorer opening
 :nmap <space>e :CocCommand explorer<CR>
+
+" Use ctrl + / as a comment
+map <space>/ :Commentary<CR>
 
 " Spaces and tabs 
 set tabstop=4       " number of visual spaces per TAB
@@ -138,3 +142,5 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+set pyx=3
