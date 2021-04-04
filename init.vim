@@ -89,6 +89,8 @@ Plug 'fwcd/kotlin-language-server'
 Plug 'stephpy/vim-yaml'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+Plug 'ryanoasis/vim-devicons'
 " Plug 'chiel92/vim-autoformat'
 
 call plug#end()
@@ -96,7 +98,25 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 
-let g:coc_global_extensions = ['coc-pairs', 'coc-docker', 'coc-java', 'coc-prettier', 'coc-json', 'coc-eslint', 'coc-tsserver', 'coc-css', 'coc-python', 'coc-angular', 'coc-yaml', 'coc-vimlsp', 'coc-sh', 'coc-snippets', "coc-explorer"]
+let g:coc_global_extensions = [
+            \ 'coc-omnisharp',
+            \ 'coc-rust-analyzer', 
+            \ 'coc-pairs', 
+            \ 'coc-docker', 
+            \ 'coc-java', 
+            \ 'coc-prettier', 
+            \ 'coc-json', 
+            \ 'coc-eslint',
+            \ 'coc-tsserver', 
+            \ 'coc-css', 
+            \ 'coc-python', 
+            \ 'coc-angular', 
+            \ 'coc-yaml', 
+            \ 'coc-vimlsp', 
+            \ 'coc-sh', 
+            \ 'coc-snippets', 
+            \ 'coc-explorer',
+            \ ]
 
 " Split navigations
 noremap <C-J> <C-W><C-J>
@@ -120,6 +140,7 @@ set expandtab       " tabs are space
 noremap <silent> <C-p> :Files<CR>
 noremap <silent> <C-o> :Buffers<CR>
 noremap <C-f> :Files<CR>
+noremap <C-i> :GFiles<CR>
 
 " Auto format java file
 command! -nargs=0 Format :call CocAction('format')
