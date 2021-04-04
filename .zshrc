@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
@@ -13,8 +20,13 @@ export ZSH="/home/qverkk/.oh-my-zsh"
 # dst
 # avit
 # sonicradish
-ZSH_THEME="dst"
+# ZSH_THEME="dst"
+ZSH_THEME="dracula-pro"
+# ZSH_THEME="robbyrussell"
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg-8,bold"
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -81,11 +93,15 @@ zstyle :omz:plugins:ssh-agent lifetime 1h
 source $ZSH/oh-my-zsh.sh
 source <(kubectl completion zsh)
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
+
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -106,10 +122,26 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+
 alias n="nvim"
 alias sudo="sudo "
-alias new_java_proj="./Documents/new_java_project.sh"
 alias k="kubectl"
 complete -F __start_kubectl k
 
-TERM=konsole
+TMUX_POWERLINE_PATCHED_FONT_IN_USE="false"
+# TERM=konsole
+alias tmux="TERM=konsole-256color tmux"
+alias vim="nvim"
+alias config="vim ~/.config/i3/config"
+alias cross="~/.cargo/bin/cross "
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
