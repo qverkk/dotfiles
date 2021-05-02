@@ -24,8 +24,8 @@ export ZSH="/home/qverkk/.oh-my-zsh"
 ZSH_THEME="dracula-pro"
 # ZSH_THEME="robbyrussell"
 
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg-8,bold"
+# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg-8,bold"
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -93,8 +93,18 @@ zstyle :omz:plugins:ssh-agent lifetime 1h
 source $ZSH/oh-my-zsh.sh
 source <(kubectl completion zsh)
 
+autoload -U compinit promptinit
+
+promptinit
+
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+fpath=(/usr/local/share/zsh-completions $fpath)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+bindkey '^I'   complete-word       # tab          | complete
+bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 
 # User configuration
 
@@ -142,6 +152,16 @@ alias tmux="TERM=konsole-256color tmux"
 alias vim="nvim"
 alias config="vim ~/.config/i3/config"
 alias cross="~/.cargo/bin/cross "
+alias open="gio open"
+alias sptd="spotifyd -u membersy@gmail.com -p BBB0t3kaa!! -B 320 -d computer"
+alias obs-wayland="QT_QPA_PLATFORM=xcb obs"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH=$HOME/.config/nvcode/utils/bin:$PATH
+export PATH=$HOME/.config/nvim/utils/bin:$PATH
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/qverkk/.sdkman"
+[[ -s "/home/qverkk/.sdkman/bin/sdkman-init.sh" ]] && source "/home/qverkk/.sdkman/bin/sdkman-init.sh"
+export PATH=$HOME/.config/nvcode/utils/bin:$PATH
